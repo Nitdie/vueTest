@@ -1,8 +1,15 @@
 import Api from '@/services/Api'
+import '@/global.d.ts'
 
 export default {
-    register (credentials: {account:string,password:string}){
+    register (credentials: LoginData){
+        console.log('posted')
         return Api().post('register',credentials)
-    }
 
+    }
 }
+
+ // AuthenticationService.register({
+ //     account:'account',
+ //     password:'word',
+ // })
