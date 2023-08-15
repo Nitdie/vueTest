@@ -11,33 +11,33 @@ const formData: LoginData = {
 let form = ref(formData)
 
 // TS内form是ref元素  TS外form是object
-async function register(){
+async function login(){
   try{
-     const response = await AuthenticationService.register({
+     const response = await AuthenticationService.login({
         account:form.value.account,
         password:form.value.password
     })
-    alert('Register Successful')
+    alert('Login Successful')
   }
     catch(error){
-         alert('Invalid Account')
+         alert('Invalid Account or Password')
     }
 }
 </script>
 
 <template>
   <div class="layout">
-    <h1>REGISTER</h1>
+    <h1>LOGIN</h1>
     <el-form :model="form" label-width="70px">
       <el-form-item label="Account ">
         <el-input v-model="form.account"/>
       </el-form-item>
       <el-form-item label="Password">
-        <el-input type="password" v-model="form.password" @keyup.enter.native="register"/>
+        <el-input type="password" v-model="form.password" @keyup.enter.native="login"/>
       </el-form-item>
       <el-form-item>
         <el-button
-            plain style="margin-left:40px;" @click="register">Submit</el-button>
+            plain style="margin-left:40px;" @click="login">Submit</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -56,7 +56,5 @@ h1
 
 el-form
   height: 100px
-
-
 
 </style>
