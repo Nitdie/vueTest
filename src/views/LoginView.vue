@@ -25,7 +25,7 @@ async function login(){
         account:form.value.account,
         password:form.value.password
     })
-    // 登陆成功
+    // 登陆成功    本地保存token 存在问题：用户可以在本地修改token
     let token:string = form.value.account
     localStorage.setItem("userInfo",token)
     store.commit("setUserInfo",token)
@@ -33,7 +33,7 @@ async function login(){
   }
     catch(error){
          alert('Invalid Account or Password')
-    }
+    }  //Todo: 添加Logout按钮 点击后清空localstorage和state，并重定向到登陆页面
 }
 </script>
 
