@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import AuthenticationService from "@/services/AuthenticationService";
+import store from "@/store";
+import {onMounted} from "vue";
+
+onMounted(()=>{
+  const LocalUserInfo = localStorage.getItem('userInfo')
+  if(LocalUserInfo != undefined)
+    console.log(`User-${LocalUserInfo} Already Logged In`)
+})
 
 // 使用全局interface
 const formData: LoginData = {
@@ -17,6 +25,10 @@ async function login(){
         account:form.value.account,
         password:form.value.password
     })
+    // 登陆成功
+    let token:string = form.value.account
+    localStorage.setItem("userInfo",token)
+    store.commit("setUserInfo",token)
     alert('Login Successful')
   }
     catch(error){
