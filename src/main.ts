@@ -6,6 +6,10 @@ import ElementPlus from 'element-plus'
 import './global.d.ts'
 import store from "@/store";
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import io from "socket.io-client"
+
+const socket = io("http://localhost:8888")
+
 
 const app = createApp(App)
 

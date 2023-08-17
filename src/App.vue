@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import {onMounted, provide} from "vue";
+import store from "@/store";
+import io from "socket.io-client"
+
+const socket = io("http://localhost:8888")
+provide("socket",socket)
+
+onMounted(()=>{
+  store.commit("setUserInfo",localStorage.getItem('userInfo'))
+})
 
 </script>
 
